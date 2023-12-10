@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-learning website</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="contact.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="top-header">
+        <div class="notifications">
+          <h3>All course 28% off for somali people’s.</h3>
+        </div>
+        <div class="social">
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-square-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-skype"></i>
+        </div>
+      </div>
+
+      <section>
+        <div class="menu">
+          <div class="logo">
+            <a href="index.html" style="display: flex; align-items: center"
+              ><img src="images/logo.png" alt="" />
+              <h3>dugsiiye team</h3></a
+            >
+          </div>
+          <div class="left">
+            <ul>
+              <li><a href="index.html">home</a></li>
+              <li><a href="courses.html">courses</a></li>
+              <li><a href="block.html">blog</a></li>
+              <li><a href="">contact</a></li>
+            </ul>
+            <div class="regitration">
+              <a href="login.html">
+                <div class="signin allbtn"><button>Signin</button></div></a
+              >
+              <a href="registration.html">
+                <div class="signup allbtn"><button>Sign Up</button></div></a
+              >
+
+              <div class="account hide"></div>
+              <div class="account-info hide">
+                <h4 class="currentusername"></h4>
+                <h5 class="myaccount">
+                  <i class="fa-solid fa-user"></i> my account
+                </h5>
+                <h5 class="logout">
+                  <i class="fa-solid fa-right-from-bracket"></i> logout
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div class="bars"><i class="fa-solid fa-bars-staggered"></i></div>
+        </div>
+
+        <div class="content">
+          <div class="left-content">
+            <h4>Home // contact</h4>
+            <p>contact us.</p>
+          </div>
+          <div class="right-content">
+            <img src="images/kiosk-main-2.jpg" alt="" />
+          </div>
+        </div>
+      </section>
+    </div>
+    <section>
+        <div class="container">
+            <h1>Contact Us</h1>
+            <form>
+              <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="input-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+              <div class="input-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+              </div>
+              <div class="input-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit">Send</button>
+            </form>
+          </div>
+    </section>
+
+    <footer>
+      <p>&copy; Team dugsiiye</p>
+    </footer>
+
+    <script>
+    
+    let accountinfo = document.querySelector(".account-info");
+  
+      let account = document.querySelector(".account");
+      let allbtn = document.querySelectorAll(".allbtn");
+      let logout = document.querySelector(".logout");
+      let myaccount = document.querySelector(".myaccount");
+     
+    
+
+
+     
+
+     
+
+        let userdata = JSON.parse(localStorage.getItem("currentUser"));
+
+        if (userdata) {
+          let currentusername = document.querySelector(".currentusername");
+          currentusername.innerText = userdata.fullname;
+          account.innerText = userdata.fullname.charAt(0);
+          allbtn.forEach((element) => {
+            element.classList.add("hide");
+
+            account.classList.remove("hide");
+          });
+        } else {
+          allbtn.forEach((element) => {
+            element.classList.remove("hide");
+
+            account.classList.add("hide");
+          });
+        }
+
+        account.addEventListener("click", function () {
+          accountinfo.classList.toggle("hide");
+        });
+
+
+
+   
+      myaccount.addEventListener("click", () => {
+        window.location.href = "userAccount.html";
+      });
+      logout.addEventListener("click", () => {
+        localStorage.removeItem("currentUser");
+
+        window.location.href = "index.html";
+      });
+
+      let bars = document.querySelector(".bars i");
+      let left = document.querySelector(".left");
+      bars.onclick = () => {
+        bars.classList.toggle("fa-xmark");
+        left.classList.toggle("open");
+      };
+
+
+
+   
+  
+    </script>
+  </body>
+</html>
+

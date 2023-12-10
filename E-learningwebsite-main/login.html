@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-learning website</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="top-header">
+        <div class="notifications">
+          <h3>All course 28% off for somali people’s.</h3>
+        </div>
+        <div class="social">
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-square-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-skype"></i>
+        </div>
+      </div>
+      <section>
+        <div class="menu">
+          <div class="logo">
+            <a href="index.html" style="display: flex; align-items: center;" ><img src="images/logo.png" alt="" />
+              <h3>dugsiiye team</h3></a>
+            </div>
+          <div class="left">
+           
+
+            <ul>
+              <li><a href="index.html">home</a></li>
+              <li><a href="courses.html">courses</a></li>
+              <li><a href="block.html">blog</a></li>
+              <li><a href="contact.html">contact</a></li>
+            </ul>
+            <div class="regitration">
+              <a href="login.html">
+                <div class="signin allbtn"><button>Signin</button></div></a
+              >
+              <a href="registration.html">
+                <div class="signup allbtn"><button>Sign Up</button></div></a
+              >
+  
+              <div class="account hide"></div>
+              <div class="account-info hide">
+                <h4 class="currentusername" ></h4>
+                <h5 class="myaccount"><i class="fa-solid fa-user "></i> my account</h5>
+                <h5 class="logout"><i class="fa-solid fa-right-from-bracket"></i> logout</h5>
+              </div>
+            </div>
+          </div>
+     <div class="bars"><i class="fa-solid fa-bars-staggered"></i></div>
+        </div>
+        <div class="content">
+          <div class="left-content">
+            <h4>Home // Login</h4>
+            <p>Login.</p>
+          </div>
+          <div class="right-content">
+            <img src="images/kiosk-main-2.jpg" alt="" />
+          </div>
+        </div>
+      </section>
+    </div>
+    <section>
+      <div class="container">
+        <h2>Login Form</h2>
+        <div class="signUP">
+          <img src="images/insert-image-file_22110-499.avif" />
+          <form>
+            <label>Email</label>
+            <input type="email" class="email" placeholder="Enter Email" />
+  
+            <label>password</label>
+            <input
+              type="password"
+              class="password"
+              placeholder="Enter your password"
+            />
+            <button class="submit" type="submit">Submit</button>
+            <p>I don't have an account <span class="span" >sign up</span></p>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; Team dugsiiye</p>
+    </footer>
+
+    <script>
+        const email = document.querySelector(".email");
+        const password = document.querySelector(".password");
+        const submitbtn = document.querySelector(".submit");
+        const span = document.querySelector(".span");
+
+        let accountinfo = document.querySelector(".account-info")
+      let account = document.querySelector(".account")
+      let allbtn = document.querySelectorAll(".allbtn")
+        submitbtn.addEventListener("click", function (e) {
+          e.preventDefault()
+          if (email.value == "" || password.value == "") {
+            Swal.fire({
+              title: "Please enter email and password",
+              // icon: 'question',
+              // iconHtml: '؟',
+              confirmButtonText: "ok"
+            });
+          } else {
+            let data=[]
+            data= JSON.parse( localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")) :[]
+  
+            if(data.some((f)=>{
+             return f.email==email.value && f.password==password.value
+            })){
+              Swal.fire({
+              title: "login successfull",
+              // icon: 'question',
+              // iconHtml: '؟',
+              confirmButtonText: "ok"
+            });
+              let currentUser=data.filter((current)=>{
+                return current.email==email.value && current.password==password.value
+
+                
+              })[0];
+         
+  
+          
+  
+              localStorage.setItem('currentUser',JSON.stringify(currentUser ));
+              window.location.href="courses.html"
+            }else{
+              Swal.fire({
+              title: "Please Correct Email and Password",
+              // icon: 'question',
+              // iconHtml: '؟',
+              confirmButtonText: "ok"
+            });
+            }
+          }
+        });
+        span.addEventListener("click",()=>{
+          window.location.href='registration.html'
+  
+        });
+        let userdata = JSON.parse(localStorage.getItem('currentUser'));
+
+if(userdata){
+  let currentusername = document.querySelector(".currentusername")
+        currentusername.innerText = userdata.fullname
+        account.innerText = userdata.fullname.charAt(0);
+  allbtn.forEach(element=>{
+element.classList.add("hide")
+
+account.classList.remove("hide")
+  })
+
+}else{
+  allbtn.forEach(element=>{
+element.classList.remove("hide")
+
+account.classList.add("hide")
+  })
+
+}
+
+        account.addEventListener("click", function() {
+        accountinfo.classList.toggle("hide")
+
+
+      })
+
+      let bars = document.querySelector(".bars i");
+      let left = document.querySelector(".left");
+              bars.onclick=()=>{
+                bars.classList.toggle("fa-xmark")
+               left.classList.toggle("open")
+      }
+
+    
+      </script>
+  </body>
+</html>

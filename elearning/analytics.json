@@ -1,0 +1,61 @@
+{
+	"courses": [
+		{
+			"id": 1,
+			"title": "JavaScript Basics",
+			"enrollmentCount": 50,
+			"completionRate": 0.8,
+			"averageScore": 85
+		},
+		{
+			"id": 2,
+			"title": "CSS Styling",
+			"enrollmentCount": 40,
+			"completionRate": 0.6,
+			"averageScore": 75
+		},
+		{
+			"id": 3,
+			"title": "Python Programming",
+			"enrollmentCount": 35,
+			"completionRate": 0.9,
+			"averageScore": 92
+		},
+		{
+			"id": 4,
+			"title": "HTML5 Fundamentals",
+			"enrollmentCount": 55,
+			"completionRate": 0.7,
+			"averageScore": 80
+		},
+		{
+			"id": 5,
+			"title": "Web Development with React",
+			"enrollmentCount": 30,
+			"completionRate": 0.85,
+			"averageScore": 88
+		},
+		{
+			"id": 6,
+			"title": "Data Science with Python",
+			"enrollmentCount": 25,
+			"completionRate": 0.75,
+			"averageScore": 78
+		},
+		{
+			"id": 7,
+			"title": "Java Programming",
+			"enrollmentCount": 45,
+			"completionRate": 0.9,
+			"averageScore": 90
+		},
+		{
+			"id": 8,
+			"title": "Introduction to Machine Learning",
+			"enrollmentCount": 35,
+			"completionRate": 0.8,
+			"averageScore": 85
+		}
+	]
+	
+}
